@@ -33,7 +33,7 @@
           <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
           -->
         </div>
-        <small class="text-body-secondary">9 mins</small>
+        <!-- <small class="text-body-secondary">9 mins</small> -->
       </div>
       <div id="urls"></div>
     </div>
@@ -101,30 +101,6 @@
 </main>
 
 <script>
-    const cardGenerator =
-        (obj) => template('card-template', {
-            imgsrc: "this is a link",
-            title: "this is a title",
-            description: "this is a description",
-            urls: [
-                () => template('url-button-template', {
-                    url: "[1] this is a url",
-                    title: "[1] this is a title",
-                }),
-                () => template('url-button-template', {
-                    url: "[2] this is a url",
-                    title: "[2] this is a title",
-                }),
-            ],
-        });
-
-    const rfos = {
-        imgsrc: "https://github.com/rfmineguy/2024_barebones_os"
-    };
-
-    console.log(cardGenerator());
-    // emit(cardGenerator(), 'project-container');
-
     /* RFOS
     */
     emit((() => template('card-template', {
@@ -181,7 +157,7 @@
     /* Generics Generator
     */
     emit((() => template('card-template', {
-            title: "Generatics Generator",
+            title: "Generatics Generator (WIP)",
             imgsrc: "assets/images/terminal-svgrepo-com.svg",
             description: `
                 A cli program for generating templated C code
