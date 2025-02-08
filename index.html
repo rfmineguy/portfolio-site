@@ -15,7 +15,7 @@
 
 <template id="url-button-template">
   <a href={{url}}>
-    <button type="button" class="btn btn-sm btn-outline-secondary">{{title}}</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem">{{title}}</button>
   </a>
 </template>
 
@@ -157,7 +157,7 @@
     /* Generics Generator
     */
     emit((() => template('card-template', {
-            title: "Generatics Generator (WIP)",
+            title: "Generics Generator (WIP)",
             imgsrc: "assets/images/terminal-svgrepo-com.svg",
             description: `
                 A cli program for generating templated C code
@@ -190,7 +190,7 @@
     */
     emit((() => template('card-template', {
             title: "Modular Tools",
-            imgsrc: "assets/images/modulartools.png",
+            imgsrc: "assets/images/modular_tools.png",
             description: `
                 A minecraft mod that adds special attributes to various tools
             `,
@@ -198,6 +198,26 @@
                 () => template('url-button-template', {
                     url: "https://github.com/rfmineguy/modular-tools",
                     title: "Github",
+                })
+            ],
+        }))(), 'project-container');
+
+    /* 6502emu
+    */
+    emit((() => template('card-template', {
+            title: "6502emu",
+            imgsrc: "assets/images/6502.png",
+            description: `
+                A basic 6502 emulator written in C
+            `,
+            urls: [
+                () => template('url-button-template', {
+                    url: "https://github.com/rfmineguy/6502emu",
+                    title: "Github (6502emu)",
+                }),
+                () => template('url-button-template', {
+                    url: "https://github.com/rfmineguy/6502emu-gui",
+                    title: "Github (6502emu GUI)",
                 })
             ],
         }))(), 'project-container');
