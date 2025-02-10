@@ -6,6 +6,7 @@
     <title>Riley Fischer - Portfolio</title>
     <script type="text/javascript" src="src/template.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="main.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon.svg" />
     <link rel="shortcut icon" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon.ico" />
@@ -25,24 +26,27 @@
 </template>
 
 <template id="card-template">
-<div class="col">
-  <div class="card shadow-sm">
-    <img src={{imgsrc}} width="100%" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: contain">
+  <div id="card" class="card shadow-sm">
+    <div class="card-heading">
+        <img class="front" src={{imgsrc}} width="100%" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: contain">
+        <div class="back">
+            <p>{{back_text}}</p>
+        </div>
+    </div>
+    <hr>
     <div class="card-body">
       <h5 class="card-title">{{title}}</h5>
       <p class="card-text">{{description}}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div id="urls" class="btn-group">
-          <!--
-          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          -->
+          <!-- Dynamically populated -->
         </div>
-        <!-- <small class="text-body-secondary">9 mins</small> -->
+        <div class="btn-group">
+          <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <header data-bs-theme="dark">
@@ -83,9 +87,9 @@
   <section class="py-1 text-center container">
     <div class="row py-lg-1">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Portfolio</h1>
+          <!-- <h1 class="fw-light">Portfolio</h1> -->
         <p class="text-body-secondary">
-        Passionate about coding, I’m a Computer Science student with a 4.0 GPA at Cal State East Bay who is driven by continuous learning. I have experience in operating systems, programming languages development, and I excel at Java, C, and C++.
+        Passionate about programming, I’m a Computer Science student with a 4.0 GPA at Cal State East Bay who is driven by continuous learning. I have experience in operating systems, programming languages development, and I excel at Java, C, and C++.
         </p.>
         <hr>
         <p class="text-body-secondary">
@@ -111,11 +115,36 @@
 </main>
 
 <script>
+    const flip_card = (dom_element) => {
+        let dom = dom_element.querySelector('#learn-more');
+        let card_heading = dom_element.querySelector('#card');
+        dom.onclick = () => {
+            // if click again on flipped card, unflip that card
+            if (card_heading.classList.contains('flipped')) {
+                card_heading.classList.remove('flipped');
+            }
+            // if click on a non-flipped card, unflip all other cards and flip this one
+            else {
+                let headings = document.getElementsByClassName('card');
+                for (let i = 0; i < headings.length; i++) {
+                    console.log(headings[i]);
+                    headings[i].classList.remove('flipped');
+                }
+                card_heading.classList.toggle('flipped');
+            }
+        };
+    };
+
     /* RFOS
     */
     emit((() => template('card-template', {
             title: "RFOS",
             imgsrc: "assets/images/rfos.jpg",
+            back_text: `
+                My operating system's college professor created an extra credit assignment at the start of the semester to make an operating system from scratch by the end of the semester. <br>
+                <br>
+                I took that to heart and immediately started, and I'm glad I did because of all of the unexpected hurdles I ran into.<br>
+            `,
             description: `
                 RFOS is a project that started in my operating systems class.<br>
                 It is capable of basic file system handling functions.
@@ -126,13 +155,18 @@
                     title: "Github",
                 }),
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* Spaz
     */
     emit((() => template('card-template', {
             title: "Spaz",
             imgsrc: "assets/images/spaz.png",
+            back_text: `
+                Spaz was inspired by @Tsoding's Porth, and my college programming languages class.<br>
+                <br>
+                My stance was that if I'm learning the theory of programming languages it might be fun to implement what I was learning!
+            `,
             description: `
                 Spaz is a stack based programming language inspired by @Tsoding's Porth compiler
             `,
@@ -146,13 +180,16 @@
                     title: "Docs Site",
                 }),
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* Mirror Lib
     */
     emit((() => template('card-template', {
             title: "Mirror Lib",
             imgsrc: "assets/images/mirror_lib.png",
+            back_text: `
+                I made mirror lib because I wanted to make a C library that could stand on it's own so it could be used in any C environment.
+            `,
             description: `
                 Mirrorlib is a small library for simulating perfect reflections
             `,
@@ -162,13 +199,20 @@
                     title: "Github",
                 })
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* Generics Generator
     */
     emit((() => template('card-template', {
             title: "Generics Generator (WIP)",
             imgsrc: "assets/images/terminal-svgrepo-com.svg",
+            back_text: `
+                Generics generator is a work in progress library that solves the problem of the C programming language not having a built in 
+                generic typing system.<br>
+                <br>
+                Ever since I started programming in C I've always found the lack of generic data structures frustrating, and I hope for this
+                library to solve that problem for me.
+            `,
             description: `
                 A cli program for generating templated C code
             `,
@@ -178,13 +222,18 @@
                     title: "Github",
                 })
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* Mornamals
     */
     emit((() => template('card-template', {
             title: "Mornamals",
             imgsrc: "assets/images/mornamals.png",
+            back_text: `
+                This is a game idea that a classmate had, and wanted to turn into a game. She was skilled in the art department and I was skilled in the programming areas.<br>
+                So we teamed up to brainstorm this game! The premise was supposed to be that you play as an animal and you can morph yourself to gain certain abilities.<br>
+                Unfortunately the game didnt fully come to fruition, but it was a good introduction to java programming and game programming.
+            `,
             description: `
                 A game I worked on with a classmate
             `,
@@ -194,13 +243,18 @@
                     title: "Github",
                 })
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* Modular Tools
     */
     emit((() => template('card-template', {
             title: "Modular Tools",
             imgsrc: "assets/images/modular_tools.png",
+            back_text: `
+                Modular tools is a minecraft mod that adds special attributes to various tools. The inspiration for this mod was that I wanted a mod that had tools which contained togglable abilities.<br>
+                <br>
+                The premise is that you create tool modules for a certain ability (i.e. mining size, speed, reach, etc.) and you apply them to the tool to gain that ability.
+            `,
             description: `
                 A minecraft mod that adds special attributes to various tools
             `,
@@ -210,13 +264,18 @@
                     title: "Github",
                 })
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 
     /* 6502emu
     */
     emit((() => template('card-template', {
             title: "6502emu",
             imgsrc: "assets/images/6502.png",
+            back_text: `
+                6502emu is a C library that emulates the 6502 instruction set. It is capable of disassembling, and executing 6502 assembly binaries.<br>
+                <br>
+                My inspiration for it came from a brief interest in NES assembly programming, and being in awe of the relative simplicity of the architecture.<br>
+            `,
             description: `
                 A basic 6502 emulator written in C
             `,
@@ -230,7 +289,7 @@
                     title: "Github (6502emu GUI)",
                 })
             ],
-        }))(), 'project-container');
+        }, flip_card))(), 'project-container');
 </script>
 
 <footer class="text-body-secondary py-5">
