@@ -185,25 +185,6 @@
             ],
         }, flip_card))(), 'project-container');
 
-    /* Mirror Lib
-    */
-    emit((() => template('card-template', {
-            title: "Mirror Lib",
-            imgsrc: "assets/images/mirror_lib.png",
-            back_text: `
-                I made mirror lib because I wanted to make a C library that could stand on it's own so it could be used in any C environment.
-            `,
-            description: `
-                Mirrorlib is a small library for simulating perfect reflections
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/mirror-lib",
-                    title: "Github",
-                })
-            ],
-        }, flip_card))(), 'project-container');
-
     /* Generics Generator
     */
     emit((() => template('card-template', {
@@ -290,6 +271,25 @@
                 () => template('url-button-template', {
                     url: "https://github.com/rfmineguy/6502emu-gui",
                     title: "Github (6502emu GUI)",
+                })
+            ],
+        }, flip_card))(), 'project-container');
+
+    /* Mirror Lib
+    */
+    emit((() => template('card-template', {
+            title: "Mirror Lib",
+            imgsrc: "assets/images/mirror_lib.png",
+            back_text: `
+                I made mirror lib because I wanted to make a C library that could stand on it's own so it could be used in any C environment.
+            `,
+            description: `
+                Mirrorlib is a small library for simulating perfect reflections
+            `,
+            urls: [
+                () => template('url-button-template', {
+                    url: "https://github.com/rfmineguy/mirror-lib",
+                    title: "Github",
                 })
             ],
         }, flip_card))(), 'project-container');
