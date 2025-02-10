@@ -39,7 +39,7 @@ function template(template_id, replacements) {
 }
 
 // create the dom element
-function template(template_id, replacements) {
+function template(template_id, replacements, init_function) {
     // console.log(`creating template ${template_id}`);
     // Find the template dom element with id=template_id
     const template_obj = document.getElementById(template_id);
@@ -76,6 +76,7 @@ function template(template_id, replacements) {
             // dom.appendChild(dom2);
         }
     }
+    if (init_function) init_function(dom);
 
     // Create the dom object
     return dom;
