@@ -26,7 +26,7 @@
 </template>
 
 <template id="card-template">
-  <div id="card" class="card shadow-sm">
+  <div id="card" class="card shadow-sm h-100">
     <div class="card-heading">
         <img class="front" src={{imgsrc}} alt="" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: scale-down">
         <div class="back">
@@ -39,13 +39,12 @@
           <h5>{{title}}</h5>
       </div>
       <p class="card-text">{{description}}</p>
+    </div>
+    <div class="card-footer">
       <div class="d-flex justify-content-between align-items-center">
         <div id="urls" class="btn-group">
-          <!-- Dynamically populated -->
         </div>
-        <div class="btn-group">
-          <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
-        </div>
+        <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
       </div>
     </div>
   </div>
@@ -92,7 +91,7 @@
 
   <section class="py-1 text-center container">
     <div class="row py-lg-1">
-      <div class="col-lg-6 col-md-8 mx-auto">
+      <div class="col-lg-6 col-md-8 mx-auto align-items-strech">
           <!-- <h1 class="fw-light">Portfolio</h1> -->
         <p class="text-body-secondary">
         </p.>
@@ -271,11 +270,11 @@
             urls: [
                 () => template('url-button-template', {
                     url: "https://github.com/rfmineguy/6502emu",
-                    title: "Github (6502emu)",
+                    title: "Github",
                 }),
                 () => template('url-button-template', {
                     url: "https://github.com/rfmineguy/6502emu-gui",
-                    title: "Github (6502emu GUI)",
+                    title: "Github (GUI)",
                 })
             ],
         }, flip_card))(), 'project-container');
