@@ -19,24 +19,24 @@ function emit_template_to(template_id, to_id, replacements) {
     parent_obj.appendChild(obj);
 }
 
-function template(template_id, replacements) {
-    const template_obj = document.getElementById(template_id);
-    if (!template_obj) {
-        console.error(`${template_id} doesnt exist\n`);
-        return;
-    }
-    const tmpl_clone = document.getElementById(template_id).content.cloneNode(true);
-    let contents = template_obj.innerHTML;
-    for (const [key, value] of Object.entries(replacements)) {
-        const regex = new RegExp(`{{${key}}}`, 'g');
-        contents = contents.replace(regex, `${value}`);
-    }
-    console.log(contents);
-
-    const obj = document.createElement('div');
-    obj.innerHTML = contents;
-    return obj;
-}
+// function template(template_id, replacements) {
+//     const template_obj = document.getElementById(template_id);
+//     if (!template_obj) {
+//         console.error(`${template_id} doesnt exist\n`);
+//         return;
+//     }
+//     const tmpl_clone = document.getElementById(template_id).content.cloneNode(true);
+//     let contents = template_obj.innerHTML;
+//     for (const [key, value] of Object.entries(replacements)) {
+//         const regex = new RegExp(`{{${key}}}`, 'g');
+//         contents = contents.replace(regex, `${value}`);
+//     }
+//     console.log(contents);
+// 
+//     const obj = document.createElement('div');
+//     obj.innerHTML = contents;
+//     return obj;
+// }
 
 // create the dom element
 function template(template_id, replacements, init_function) {

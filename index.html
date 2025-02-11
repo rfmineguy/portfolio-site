@@ -35,7 +35,9 @@
     </div>
     <hr>
     <div class="card-body">
-      <h5 class="card-title">{{title}}</h5>
+      <div class="card-title row">
+          <h5>{{title}}</h5>
+      </div>
       <p class="card-text">{{description}}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div id="urls" class="btn-group">
@@ -146,7 +148,7 @@
             back_text: `
                 My operating system's college professor created an extra credit assignment at the start of the semester to make an operating system from scratch by the end of the semester. <br>
                 <br>
-                I took that to heart and immediately started, and I'm glad I did because of all of the unexpected hurdles I ran into.<br>
+                I accepted the challenge and started immediately. This project was the most challenging I've had in school to date.<br>
             `,
             description: `
                 RFOS is a project that started in my operating systems class.<br>
@@ -166,9 +168,10 @@
             title: "Spaz",
             imgsrc: "assets/images/spaz.png",
             back_text: `
-                Spaz was inspired by @Tsoding's Porth, and my college programming languages class.<br>
+                Spaz was inspired by @Tsoding's <a href="https://gitlab.com/tsoding/porth">Porth</a>, and my college programming languages class.<br>
                 <br>
-                My stance was that if I'm learning the theory of programming languages it might be fun to implement what I was learning!
+                I felt that while I was learning the theory of programming languages it might be fun to implement what I was learning! And it was!<br>
+                <br>
             `,
             description: `
                 Spaz is a stack based programming language inspired by @Tsoding's Porth compiler
@@ -191,11 +194,11 @@
             title: "Generics Generator (WIP)",
             imgsrc: "assets/images/terminal-svgrepo-com.svg",
             back_text: `
-                Generics generator is a work in progress library that solves the problem of the C programming language not having a built in 
+                Generics Generator is a work in progress library that solves the problem of the C programming language not having a built in 
                 generic typing system.<br>
                 <br>
-                Ever since I started programming in C I've always found the lack of generic data structures frustrating, and I hope for this
-                library to solve that problem for me.
+                When I started programming in C I found the lack of generic data structures frustrating, and began this
+                library to solve that problem.
             `,
             description: `
                 A cli program for generating templated C code
@@ -214,9 +217,11 @@
             title: "Mornamals",
             imgsrc: "assets/images/mornamals.png",
             back_text: `
-                This is a game idea that a classmate had, and wanted to turn into a game. She was skilled in the art department and I was skilled in the programming areas.<br>
-                So we teamed up to brainstorm this game! The premise was supposed to be that you play as an animal and you can morph yourself to gain certain abilities.<br>
-                Unfortunately the game didnt fully come to fruition, but it was a good introduction to java programming and game programming.
+                This is a game idea that a classmate had, and wanted to turn into a game. She was skilled in art and I was skilled in programming.<br>
+                <br>
+                I never got the art from her, so this is my programmer arg.<br>
+                <br>
+                Unfortunately the game was never fully completed, but it was a good introduction to java programming and game programming.
             `,
             description: `
                 A game I worked on with a classmate
@@ -235,9 +240,9 @@
             title: "Modular Tools",
             imgsrc: "assets/images/modular_tools.png",
             back_text: `
-                Modular tools is a minecraft mod that adds special attributes to various tools. The inspiration for this mod was that I wanted a mod that had tools which contained togglable abilities.<br>
+                Modular Tools is a minecraft mod that adds special attributes to various tools. The inspiration for this mod was that I wanted tools which contained togglable abilities.<br>
                 <br>
-                The premise is that you create tool modules for a certain ability (i.e. mining size, speed, reach, etc.) and you apply them to the tool to gain that ability.
+                The mod allows you to create tool modules for a certain ability (i.e. mining size, speed, reach, etc.), and apply them to the tool to gain that ability.
             `,
             description: `
                 A minecraft mod that adds special attributes to various tools
@@ -278,13 +283,13 @@
     /* Mirror Lib
     */
     emit((() => template('card-template', {
-            title: "Mirror Lib",
+            title: "MirrorLib",
             imgsrc: "assets/images/mirror_lib.png",
             back_text: `
-                I made mirror lib because I wanted to make a C library that could stand on it's own so it could be used in any C environment.
+                I made MirrorLib because I watched a <a href="https://www.youtube.com/@TheCodingTrain">Coding Train</a> youtube video.
             `,
             description: `
-                Mirrorlib is a small library for simulating perfect reflections
+                MirrorLib is a small library for simulating perfect reflections
             `,
             urls: [
                 () => template('url-button-template', {
