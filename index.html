@@ -28,7 +28,7 @@
 <template id="card-template">
   <div id="card" class="card shadow-sm">
     <div class="card-heading">
-        <img class="front" src={{imgsrc}} width="100%" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: contain">
+        <img class="front" src={{imgsrc}} alt="" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: scale-down">
         <div class="back">
             <p>{{back_text}}</p>
         </div>
@@ -166,7 +166,7 @@
     */
     emit((() => template('card-template', {
             title: "Spaz",
-            imgsrc: "assets/images/spaz.png",
+            imgsrc: "assets/images/spaz_2.svg",
             back_text: `
                 Spaz was inspired by @Tsoding's <a href="https://gitlab.com/tsoding/porth">Porth</a>, and my college programming languages class.<br>
                 <br>
