@@ -19,6 +19,5 @@
 }
 
 .card.flipped > .card-heading {
-    cursor: pointer;
     transform: rotateY(180deg);
 }
