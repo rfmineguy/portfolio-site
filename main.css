@@ -21,3 +21,7 @@
 .card.flipped > .card-heading {
     transform: rotateY(180deg);
 }
+
+.card:hover {
+	transform: translate(2px, 2px);
+}
