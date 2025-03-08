@@ -24,4 +24,5 @@
 
 .card:hover {
 	transform: translate(2px, 2px);
+	border-color: #666666;
 }
