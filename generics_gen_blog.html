@@ -214,6 +214,63 @@
 				}),
 			]
 		}))(), 'blog-container')
+
+		emit((() => template('blog-entry', {
+			title: "Demo",
+			body: [
+				() => template('blog-p', {
+					content: `
+						Next, I will give a demonstration of the workflow for the first zig version.<br>
+						<br>
+						First things first, you need to decide where your templates should live. This is configured via a shell environment variable <code>GEN_TEMPLATE_PATH</code>. If this value is not provided by default it uses the current working directory.<br>
+						<br>
+						If setup correctly the help output of generics-generator will now display all the templates it finds in the selected directory.
+					`
+				}),
+				() => template('blog-code', {
+					code:
+						`
+						  $ generics-generator --help
+						  Generics generator
+						  
+						  Usage: generics-gen [COMMAND]
+						  
+						  Commands:
+							  		linked_list
+						`
+				}),
+				() => template('blog-p', {
+					content: `
+						Here we can see that it found a <code>linked_list</code> template! Furthermore each template has its own help message!<br>
+						<br>
+					`
+				}),
+				() => template('blog-code', {
+					language: 'bash',
+					code:
+						`
+						  $ generics-generator linked_list --help
+						  Usage: generics-gen linked_list [OPTIONS]
+						  Options:
+						  -f, --free=             default = free
+						  -p, --print=            default = printf
+						  -d, --datatype=
+						  -o, --outputdir=        default = .
+						  -h, --help              Print this help and exit
+						`
+				}),
+				() => template('blog-p', {
+					content: `
+						This linked list is from the same linked_list template I provided in the previous section, and you can see that all the provided args are part of the <code>linked_list</code> subcommand<br>
+						<br>
+						Also note that the <code>datatype</code> arg has no default value like the others, this is a required field.
+						<br>
+					`
+				}),
+			]
+		}))(), 'blog-container')
+
+
 		emit((() => template('blog-entry', {
 			title: "Why It Didn't Work",
 			body: [
