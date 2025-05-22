@@ -22,7 +22,7 @@ function template(template_id, replacements, init_function) {
     // Find the template dom element with id=template_id
     const template_obj = document.getElementById(template_id);
     if (!template_obj) {
-        console.error(`${template_id} doesnt exist\n`);
+        console.log(`${template_id} doesnt exist\n`);
         return undefined;
     }
 
@@ -36,7 +36,8 @@ function template(template_id, replacements, init_function) {
         Object.entries(replacements).filter(([_, value]) => Array.isArray(value)) 
     );
 
-    for (const [key, value] of Object.entries(filtered_props)) {
+    for (var [key, value] of Object.entries(filtered_props)) {
+				value = value.replace(/^[\t]+/gm, '');
         const regex = new RegExp(`{{${key}}}`, 'g');
         contents = contents.replace(regex, `${value}`);
     }
