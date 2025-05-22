@@ -61,16 +61,8 @@
   <section class="py-1 text-center container">
     <div class="row py-lg-1">
       <div class="col-lg-6 col-md-8 mx-auto align-items-strech">
-          <!-- <h1 class="fw-light">Portfolio</h1> -->
         <p class="text-body-secondary">
-        </p.>
-        <!--<p class="text-body-secondary">
-        This is a small collection of some of my most proud work as a programmer.
-        </p.>
-        <!--<p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>-->
+        </p>
       </div>
     </div>
   </section>
@@ -86,7 +78,7 @@
 
 </main>
 
-<script>
+<script type="module">
     const flip_card = (dom_element) => {
         console.log("init", dom_element);
         let dom = dom_element.querySelector('#learn-more');
@@ -107,6 +99,11 @@
             }
         };
     };
+
+		/* Include the template library
+		*/
+		await include_templatelib('/templatelib.html', ['card-template', 'url-button-template']);
+
 
     /* RFOS
     */
@@ -175,7 +172,11 @@
                 () => template('url-button-template', {
                     url: "https://github.com/rfmineguy/generics-generator",
                     title: "Github",
-                })
+                }),
+								() => template('url-button-template', {
+									url: "generics_gen_blog.html",
+									title: "Blog"
+								}),
             ],
         }, flip_card))(), 'project-container');
 
