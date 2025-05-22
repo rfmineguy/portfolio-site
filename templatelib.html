@@ -42,3 +42,27 @@
     <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem">{{title}}</button>
   </a>
 </template>
+
+<template id="blog-header">
+	<div class="container my-5">
+		<div class="p-5 text-center bg-body-tertiary rounded-3"> 
+			<h1 class="text-body-emphasis">{{title}}</h1> 
+			<p class="lead">
+				{{description}}
+			</p>
+		</div>
+	</div>
+</template>
+
+<template id="blog-p">
+	<p>{{content}}</p>
+</template>
+
+<template id="blog-entry">
+	<div class="container my-5">
+		<div class="p-3 bg-body-tertiary rounded-3">
+			<h3>{{title}}</h3>
+			<div id="body"></div>
+		</div>
+	</div>
+</template>
