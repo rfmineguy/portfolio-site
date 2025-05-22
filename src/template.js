@@ -1,46 +1,21 @@
-function emit_template_to(template_id, to_id, replacements) {
-    const template_obj = document.getElementById(template_id);
-    if (!template_obj) {
-        console.error(`${template_id} doesnt exist\n`);
-        return;
-    }
-    const tmpl_clone = document.getElementById(template_id).content.cloneNode(true);
-    let contents = template_obj.innerHTML;
-    for (const [key, value] of Object.entries(replacements)) {
-        const regex = new RegExp(`{{${key}}}`, 'g');
-        contents = contents.replace(regex, `${value}`);
-    }
-    console.log(contents);
+async function include_templatelib(templatefile, to_include) {
+	const res = await fetch(templatefile);
+	const text = await res.text();
 
-    const obj = document.createElement('div');
-    obj.innerHTML = contents;
+	const parser = new DOMParser()
+	const doc = parser.parseFromString(text, 'text/html')
 
-    const parent_obj = document.getElementById(to_id);
-    parent_obj.appendChild(obj);
+	const templates = doc.querySelectorAll('template')
+
+	for (const el of templates) {
+		if (to_include.includes(el.id)) {
+			document.head.appendChild(el.cloneNode(true))
+		}
+	}
 }
-
-// function template(template_id, replacements) {
-//     const template_obj = document.getElementById(template_id);
-//     if (!template_obj) {
-//         console.error(`${template_id} doesnt exist\n`);
-//         return;
-//     }
-//     const tmpl_clone = document.getElementById(template_id).content.cloneNode(true);
-//     let contents = template_obj.innerHTML;
-//     for (const [key, value] of Object.entries(replacements)) {
-//         const regex = new RegExp(`{{${key}}}`, 'g');
-//         contents = contents.replace(regex, `${value}`);
-//     }
-//     console.log(contents);
-// 
-//     const obj = document.createElement('div');
-//     obj.innerHTML = contents;
-//     return obj;
-// }
 
 // create the dom element
 function template(template_id, replacements, init_function) {
-    // console.log(`creating template ${template_id}`);
     // Find the template dom element with id=template_id
     const template_obj = document.getElementById(template_id);
     if (!template_obj) {
