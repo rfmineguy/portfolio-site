@@ -19,37 +19,6 @@
   </body>
 </html>
 
-<template id="url-button-template">
-  <a href={{url}}>
-    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem">{{title}}</button>
-  </a>
-</template>
-
-<template id="card-template">
-  <div id="card" class="card shadow-sm h-100">
-    <div class="card-heading">
-        <img class="front" src={{imgsrc}} alt="" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: scale-down">
-        <div class="back">
-            <p>{{back_text}}</p>
-        </div>
-    </div>
-    <hr>
-    <div class="card-body">
-      <div class="card-title row">
-          <h5>{{title}}</h5>
-      </div>
-      <p class="card-text">{{description}}</p>
-    </div>
-    <div class="card-footer">
-      <div class="d-flex justify-content-between align-items-center">
-        <div id="urls" class="btn-group">
-        </div>
-        <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <header data-bs-theme="dark">
   <div class="collapse text-bg-dark" id="navbarHeader">
     <div class="container">
