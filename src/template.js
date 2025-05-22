@@ -1,5 +1,6 @@
 async function include_templatelib(templatefile, to_include) {
 	const res = await fetch(templatefile);
+	if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
 	const text = await res.text();
 
 	const parser = new DOMParser()
