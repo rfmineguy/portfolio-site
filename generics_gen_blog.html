@@ -383,6 +383,51 @@
 				}),
 			]
 		}))(), 'blog-container')
+
+		emit((() => template('blog-entry', {
+			title: "Using the C version",
+			body: [
+				() => template('blog-p', {
+					content: `
+						The C version is completely code oriented. Everything can be written in a single <code>build.c</code> file.<br>
+						<br>
+						Let's write one here real quick, then we'll discuss what it means.<br>
+						We'll write a build script that generates the same <code>queue</code> that we saw earlier.<br>
+					`
+				}),
+				() => template('blog-code', {
+					language: 'c',
+					code: `
+						#define GENGEN_IMPLEMENTATION 		// allows the implementation code to be compiled when <code>build.c</code> is compiled
+						#include "gengen.h"
+
+						int main() {
+						  // Setup the queue template information
+						  ctemplate queuetpl     = template_create();
+						  template_addfile       (&queuetpl, "queue.htpl", "queue_$T.h");
+						  template_addfile       (&queuetpl, "queue.ctpl", "queue_$T.c");
+						  template_addreplacement(&queuetpl, "$T", NULL);
+						  template_addreplacement(&queuetpl, "^T", NULL);
+						  template_addreplacement(&queuetpl, "PRINTF", "printf");
+						  template_addreplacement(&queuetpl, "FREE",   "free");
+						  template_addreplacement(&queuetpl, "CALLOC", "calloc");
+						  template_addreplacement(&queuetpl, "HEADER", "stdint.h");
+
+						  // Setup the linked list template information
+						  ctemplate lltpl      = template_create();
+						  template_addfile       (&lltpl, "linkedlist.htpl", "linkedlist_$T.h");
+						  template_addfile       (&lltpl, "linkedlist.ctpl", "linkedlist_$T.c");
+						  template_addreplacement(&lltpl, "$T", NULL);
+						  template_addreplacement(&lltpl, "^T", NULL);
+						  template_addreplacement(&lltpl, "PRINTF", "printf");
+						  template_addreplacement(&lltpl, "FREE",   "free");
+						  template_addreplacement(&lltpl, "CALLOC", "calloc");
+						  template_addreplacement(&lltpl, "HEADER", "stdint.h");
+						}
+					`
+				})
+			]
+		}))(), 'blog-container')
 		hljs.highlightAll();
 </script>
 
