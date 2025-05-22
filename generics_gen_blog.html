@@ -64,6 +64,25 @@
 
 		emit((() => template('blog-entry', {
 			title: "Why Generics Generator?",
+			title: "Preface",
+			body: [
+				() => template('blog-p', {
+					content: `
+						Welcome! I'm glad you're interested in this blog about my generics generator project! It's been a really interesting journey getting to the point I'm at with it, and I will share that here.<br>
+						<br>
+						There are two main timelines discussed here:<br>
+						<ul>
+							<li>Generics Generator in Zig</li>
+							<li>Generics Generator in C</li>
+						</ul>
+						<br>
+						You will understand why there are two by the end of this blog.<br>
+						<br>
+						Enjoy!
+					`
+				}),
+			]
+		}))(), 'blog-container')
 			body: [
 				() => template('blog-p', {
 					content: `
