@@ -278,15 +278,83 @@
 					content: `
 						Once I was done with the Zig version of generics generator I was finding it difficult to use! I realized that I hadn't thought about how it would be actually used in a codebase.<br>
 						<br>
-						The way it was structured didn't lend itself to working within the build process of a project and this is how I originally intended it to be used. Because it required all the input as command line arguments, depending on how many parameters your template had it would make the build code really long, unweildy, and unreadable.<br>
+						The way it was structured didn't lend itself to working within the existing build process of a project (commonly Make or CMake) and this is how I originally intended it to be used. Because it required all the input as command line arguments, depending on how many parameters your template had it would make the build code really long, unweildy, and unreadable.<br>
 						<br>
-						Further still after I did figure out how to force it work I realized it didn't support incremental builds. It would regenerate the template regardless of whether it had changed. This is obviously wasteful, and potentially time consuming (though generics-generator is pretty fast).<br>
+						There were ways to make it work, but they were quite cumbersom when you had many templates you needed to generate. Here's an example Makefile for it.
+					`
+				}),
+				() => template('blog-code', {
+					language: 'Makefile',
+					code:
+						`
+						OUT_DIR   := out
+						GEN_FILES := src/generated/linked_list_int.c \\
+						             src/generated/linked_list_vec2.c \\
+						             src/generated/binary_tree_int.c \\
+						             src/generated/binary_tree_vec2.c \\
+						             src/generated/hash_table_string_int.c \\
+						             src/generated/vector_int.c \\
+						             src/generated/stack_int.c
+
+						TPL_OUTDIR := src/generated
+						SOURCES    := src/main.c $(GEN_FILES)
+						BIN        := main
+
+						# Override the template search path to the local templates folder
+						export GEN_TEMPLATE_PATH=templates
+
+						.PHONY: template_gen
+						.PHONY: clean always build
+						always:
+						  mkdir -p $(OUT_DIR)
+						  mkdir -p $(TPL_OUTDIR)
+						clean:
+						  rm -r $(OUT_DIR)
+						  rm -r $(TPL_OUTDIR)
+						build: always template_gen $(OUT_DIR)/$(BIN)
+
+						$(OUT_DIR)/$(BIN): $(SOURCES)
+							gcc $^ -o $@ -Isrc -Isrc/generated -ggdb
+
+						template_gen: $(GEN_FILES)
+						$(TPL_OUTDIR)/linked_list_int.c $(TPL_OUTDIR)/linked_list_int.h: templates/linked_list.tpl templates/linked_list.htpl templates/linked_list.ctpl
+						  generics-generator linked_list --datatype=int --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/linked_list_vec2.c $(TPL_OUTDIR)/linked_list_vec2.h: templates/linked_list.tpl templates/linked_list.htpl templates/linked_list.ctpl
+						  generics-generator linked_list --datatype=vec2 --header="vec2.h" --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/binary_tree_int.c $(TPL_OUTDIR)/binary_tree_int.h: templates/binary_tree.tpl templates/binary_tree.htpl templates/binary_tree.ctpl
+						  generics-generator binary_tree --datatype=int --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/binary_tree_vec2.c $(TPL_OUTDIR)/binary_tree_vec2.h: templates/binary_tree.tpl templates/binary_tree.htpl templates/binary_tree.ctpl
+						  generics-generator binary_tree --datatype=vec2 --header="vec2.h" --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/hash_table_string_int.c $(TPL_OUTDIR)/hash_table_string_int.h: templates/hash_table.tpl templates/hash_table.htpl templates/hash_table.ctpl
+						  generics-generator hash_table --key-name="string" --key-type="const char*" --val-name="int" --val-type="int" --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/vector_int.c $(TPL_OUTDIR)/vector_int.h: templates/vector.tpl templates/vector.htpl templates/vector.ctpl
+						  generics-generator vector --datatype=int --outputdir=$(TPL_OUTDIR)
+
+						$(TPL_OUTDIR)/stack_int.c $(TPL_OUTDIR)/stack_int.h: templates/stack.tpl templates/stack.htpl templates/stack.ctpl
+						  generics-generator stack --datatype=int --outputdir=$(TPL_OUTDIR)`
+				}),
+				() => template('blog-p', {
+					content:
+					`
 						<br>
-						So at this point I knew I had to take what I learned here and make a better, more useful version.
+						You can see here this is <em>very</em> repetitive Makefile code. There are 7 different targets that do nearly the same thing, but they are different enough to need <em>7</em> different targets!
+						<br>
+						On top of being repetitive, its just flat out hard to read and understand what's going on here! I won't break down how this works, but if any of you are Makefile nerds like me feel free to read it further.<br>
+						<br>
+						This probably doesn't need to be as verbose as I made it here but if you want to get incremental builds then this is what is needed for Makefile.<br>
+						<br>
+						So at this point I knew I had to take what I learned here and make a better, more useful version.<br>
+						<br>
+						<a href="https://github.com/rfmineguy/generics-generator">Generics Generator (Zig)</a>
 					`
 				}),
 			]
-		}))(), 'project-container')
+		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
 			title: "The Start of the C Version",
