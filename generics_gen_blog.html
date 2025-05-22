@@ -63,7 +63,6 @@
 		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
-			title: "Why Generics Generator?",
 			title: "Preface",
 			body: [
 				() => template('blog-p', {
@@ -83,12 +82,15 @@
 				}),
 			]
 		}))(), 'blog-container')
+
+		emit((() => template('blog-entry', {
+			title: "So Why Generics Generator?",
 			body: [
 				() => template('blog-p', {
 					content: `
 						As a C programmer that came from C++, I've always felt that generic datastructures were kind of a pain in the butt to use.
 						You'd have to rewrite the <u><em>exact</em></u> same code for every underlying data type you want to use, and while it works I
-						thought that wasn't a reasonable way to solve the problem. So for the past few months I've been working on a solution to that problem
+						thought that wasn't a reasonable way to solve the problem. So for the past few months I've been working on a solution to that problem.
 					`
 				}),
 				() => template('blog-p', {
@@ -98,6 +100,7 @@
 				})
 			]
 		}))(), 'project-container')
+		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
 			title: "The Initial Idea",
