@@ -118,6 +118,103 @@
 		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
+			title: "How Does It Work",
+			body: [
+				() => template('blog-p', {
+					content: `
+						The zig version worked purely off a command line interface. However the way it does so is pretty flexible.<br>
+						<br>
+						Templates can be put anywhere in your filesystem you wish, as generics-generator-zig allows you to specify where your templates are located via a shell environment variable <code>GEN_TEMPLATE_PATH</code><br>
+						It will look for files ending in <code>.tpl</code> in whatever path you set that variable to.<br>
+						<br>
+						When it finds a file matching that description it will read it, and be able to give you all the information you need in order to fill out the replacements you specified (more on this later).<br>
+						<br>
+						You can now pass different values into the template and it will generate a file with the contents of your template except now it is filled out with those replacements.<br>
+						<br>
+						Additionally, each template has the option to define another template to be a dependency. This is to allow for situations where you might want to use another datastructure youve written as a template in another template.<br>
+						<br>
+						For example, you could implement a <code>queue</code> that utlizes a <code>linkedlist</code> and have the corresponding linked list generate alongside the queue.<br>
+					`
+				}),
+				() => template('blog-p', {
+					content: `
+						Now what do these template files I'm speaking of look like? Lets go over that.<br>
+						<br>
+						The followng example will include all the features of the program to demonstrate as much as possible.<br>
+						<hr>
+						<h5>Example Template File</h5>
+					`
+				}),
+				() => template('blog-code', {
+				language: 'toml',
+				code:
+					`
+						name = "queue"
+						generators = ["queue.htpl", "queue.ctpl"]
+						outformat = "queue_T"
+						[deps.linked_list]
+						datatype = "datatype-type"
+						free = "free"
+
+						[args.datatype-name]
+						symbol = "$T"
+
+						[args.datatype-type]
+						symbol = "@T"
+
+						[args.free]
+						symbol = "FREE"
+						default = "free"
+
+						[args.print]
+						symbol = "PRINT"
+						default = "printf"
+
+						[args.calloc]
+						symbol = "CALLOC"
+						default = "calloc"
+
+						[args.realloc]
+						symbol = "REALLOC"
+						default = "realloc"
+
+						[args.header]
+						symbol = "HEADER_INCLUDE"
+						default = "stdint.h"
+					`
+				}),
+				() => template('blog-p', {
+					content: `
+						<ul>
+							<li><b>name</b> -> defines the name of this template (this field would be used to identify this template from the cli)
+							<li><b>generators</b> -> defines the list of files that are used to generate the output files (this contains the content of the template)
+							<li><b>outformat</b> -> defines the format string for how the output files should be named
+								<ul>
+									<li>In this case it is saying to output the file using whatever was specified for the 'datatype' argument
+								</ul>
+							<li><b>deps</b> -> defines what other templates this template depends on and how to construct it
+								<ul>
+									<em>Each entry defines a rule on how to forward args to the dependent.</em>
+									<li>The <code>datatype</code> argument for <code>linked_list</code> will be given the value that the <code>datatype-type</code> argument was given for <code>queue</code></li>
+								</ul>
+							<li><b>args</b> -> defines what the variables for the template are (this is the meat of the tool)
+								<ul>
+									<li><b>datatype</b> -> the datatype argument here is given the symbol <b>T</b> with no default replacement. This makes it a <em>required</em> argument on the cli.
+									<li><b>free</b> -> the free argument here is given the symbol <b>FREE</b> with a default replacement of <b>free</b>. This makes it an <em>optional</em> argument on the cli.
+									<li><b>print</b> -> the print argument here is given the symbol <b>PRINT</b> with a default replacement of <b>printf</b>. This makes it an <em>optional</em> argument on the cli.
+								</ul>
+						</ul>
+					`
+				}),
+				() => template('blog-p', {
+					content: `
+					<hr>
+						I still think that this is generally a good way of describing a template via a file, however the fact that it is a file ended up being the main problem. It meant that you have to keep around this file along with the specific generator files that were used by this template.
+					`
+				}),
+			]
+		}))(), 'blog-container')
+		emit((() => template('blog-entry', {
 			title: "Why It Didn't Work",
 			body: [
 				() => template('blog-p', {
