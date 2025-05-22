@@ -30,3 +30,15 @@
     </div>
   </div>
 </template>
+
+<!--
+	url-button-template : Defines what a project's url buttons should look like
+	args:
+		url 		: Url for where to navigate to when this button is pressed
+		title   : Title of the button
+-->
+<template id="url-button-template">
+  <a href={{url}}>
+    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem">{{title}}</button>
+  </a>
+</template>
