@@ -361,21 +361,28 @@
 			body: [
 				() => template('blog-p', {
 					content: `
-						After I realized the zig version wasn't working the way it needed to, I pivoted to make a C native version. One that had no external dependencies other than a single header file and a C99 compliant compiler.<br>
+						Given everything described above, I felt that I needed to find another solution to this problem. So using all the knowledge I gained about what was good and not so good about the Zig version I started prototyping a new version.<br>
 						<br>
-						An important point of the c version was that it had to have feature parity with the Zig version. This requirement was really helpful because it allowed me to have a focus, and not accidentally expand the scope too far.<br>
+						An important point of the c version was that it had to have feature parity with the Zig version. This requirement was really helpful because it allowed me to have a focus, and not accidentally expand the scope too far. The features that needed to stay are as follows:<br>
+						<ol>
+							<li>Ability to replace a given symbol with another (basic, without this its not the same concept anymore)</li>
+							<li>Support for dependency templates</li>
+							<li>Configuration of where templates live, and where the outputs go</li>
+						</ol>
+						The main extra requirement was that it must be simpler to use in a C/C++ project<br>
 						<br>
-						Additionally because I'm quite familiar with C, after implementing the idea once in Zig, I knew some ways to significantly simplify the C version while also making it <em>more</em> powerful.<br>
-						<br>
-						<h5>How does it simplify?</h5>
+						<h5>So how does it accomplish those goals?</h5>
 						<ol>
 							<li>The C version gets rid of the <code>.tpl</code> file entirely
-							<li>The C version removes command line arguments entirely without losing configurability
-							<li>All configuration is done in C with a well defined API
-							<li>There are very few moving parts to keep track of
+							<li>It removes command line arguments entirely without losing configurability
+							<li>It is written in a header-only style
+							<li>All template configuration is done in C with a well defined API
 						</ol>
+						<br>
 					`
 				}),
 			]
-		}))(), 'project-container')
+		}))(), 'blog-container')
+		hljs.highlightAll();
 </script>
+
