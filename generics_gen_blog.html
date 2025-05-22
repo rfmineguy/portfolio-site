@@ -509,6 +509,29 @@
 			]
 		}))(), 'blog-container')
 
+		emit((() => template('blog-entry', {
+			title: "Conclusion",
+			body: [
+				() => template('blog-p', {
+					content: `
+						This journey of working on generics generator has been a very enjoyable one.<br>
+						<br>
+						One of the main concepts I learned is that 'you don't know what you don't know'<br>
+						<br>
+						It sounds cliche, but when I started this I had a good idea of what I wanted. I was convinced it was the perfect idea and design, but it wasn't until I finished the zig version that I realized the major oversights it had.<br>
+						<br>
+						With this knowledge I was able to make a version that works better for the target audience <em>and</em> is significanly simpler.<br>
+						<br>
+						Thank you for being interested in my development journey.<br>
+						<br>
+						To take a look at either project here are the github links.<br>
+						<a href="https://github.com/rfmineguy/generics-generator">Generics Generator (Zig)</a><br>
+						<a href="https://github.com/rfmineguy/generics-generator-c">Generics Generator (C)</a>
+					`
+				})
+			]
+		}))(), 'blog-container')
+
 		hljs.highlightAll();
 </script>
 
