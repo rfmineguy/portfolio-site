@@ -24,17 +24,14 @@ function template(template_id, replacements, init_function) {
     }
 
     // Replace all parameterized elements with their replacement
-    const tmpl_clone = document.getElementById(template_id).content.cloneNode(true);
     let contents = template_obj.innerHTML;
     
     const filtered_props = Object.fromEntries(
-        Object.entries(replacements).filter(([key, value]) => !Array.isArray(value)) 
+        Object.entries(replacements).filter(([_, value]) => !Array.isArray(value)) 
     );
     const filtered_array_props = Object.fromEntries(
-        Object.entries(replacements).filter(([key, value]) => Array.isArray(value)) 
+        Object.entries(replacements).filter(([_, value]) => Array.isArray(value)) 
     );
-    // console.log("filtered_props", filtered_props);
-    // console.log("filtered_array_props", filtered_array_props);
 
     for (const [key, value] of Object.entries(filtered_props)) {
         const regex = new RegExp(`{{${key}}}`, 'g');
@@ -42,13 +39,10 @@ function template(template_id, replacements, init_function) {
     }
     const dom = document.createElement('div');
     dom.innerHTML = contents;
-    // console.log(dom);
     for (const [key, value] of Object.entries(filtered_array_props)) {
         for (let i = 0; i < value.length; i++) {
-            // console.log(value[i]());
             const dom2 = value[i]();
             dom.querySelector(`#${key}`).appendChild(dom2);
-            // dom.appendChild(dom2);
         }
     }
     if (init_function) init_function(dom);
