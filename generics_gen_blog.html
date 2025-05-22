@@ -99,11 +99,10 @@
 					`
 				})
 			]
-		}))(), 'project-container')
 		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
-			title: "The Initial Idea",
+			title: "The Idea",
 			body: [
 				() => template('blog-p', {
 					content: `
@@ -113,12 +112,10 @@
 						For every new template you wanted to make you would write a new <code>.tpl</code> file and put it in the search directory, then voila it is now a template that can be generated.<br>
 						<br>
 						I didn't know it at the time, but this method wouldn't work very well when used in existing C build toolchains like Makefile, Cmake, Meson, etc.<br>
-						<br>
-						<a href="https://github.com/rfmineguy/generics-generator">Generics Generator (Zig)</a>
 					`
 				})
 			]
-		}))(), 'project-container')
+		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
 			title: "Why It Didn't Work",
