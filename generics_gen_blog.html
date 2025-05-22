@@ -385,7 +385,7 @@
 		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
-			title: "Using the C version",
+			title: "Demo",
 			body: [
 				() => template('blog-p', {
 					content: `
@@ -423,11 +423,92 @@
 						  template_addreplacement(&lltpl, "FREE",   "free");
 						  template_addreplacement(&lltpl, "CALLOC", "calloc");
 						  template_addreplacement(&lltpl, "HEADER", "stdint.h");
+
+						  // Setup the forwarding table
+						  forward_table fwd_q_ll = forward_table_create();
+						  forward_table_forward(&fwd_q_ll, fwd(.symbol="$T", .as="$T"));
+						  forward_table_forward(&fwd_q_ll, fwd(.symbol="^T", .as="^T"));
+
+						  // Setup the dependency and specify how we forward to it (fwd_q_ll)
+						  template_adddep(&queue, linkedlist, fwd_q_ll);
+
+						  // Setup a specific replacement context for queue<int>
+						  replacement queue_int = replacement_create();
+						  replacement_add(&queue_int, "$T",  "int");
+						  replacement_add(&queue_int, "^T",  "int");
+
+						  // Setup a specific replacement context for queue<long>
+						  replacement queue_long = replacement_create();
+						  replacement_add(&queue_long, "$T",  "long");
+						  replacement_add(&queue_long, "^T",  "long");
+
+						  // Run the generators for the setup templates and replacements
+						  generator_run(settings_custom(.search_paths=paths("demo_templates", "."), .outdir="."), linkedlist, ll_int);
+						  generator_run(settings_custom(.search_paths=paths("demo_templates", "."), .outdir="."), linkedlist, ll_string);
+						  generator_run(settings_custom(.search_paths=paths("demo_templates", "."), .outdir="."), queue     , queue_int);
+						  generator_run(settings_custom(.search_paths=paths("demo_templates", "."), .outdir="."), queue     , queue_long);
 						}
+					`
+				}),
+				() => template('blog-p' ,{
+					content: `
+						<br>
+						<h5>What does this mean?</h5>
+						First we setup the <code>queue</code> template, then we setup the <code>linked_list</code> template.
+						<ul>
+							<li><b>template_create()</b> - Sets up an empty template context.</li>
+							<li><b>template_addfile(...)</b> - Adds a new source file and specifies the output filename format</li>
+							<li><b>template_addreplacement(...)</b> - Adds a new replacement that defines symbols and what they should be replaced with</li>
+						</ul>
+
+						<br>
+						Next we setup the forwarding table that defines how the <code>linked_list</code> is going to get its required replacements.
+						<ul>
+							<li><b>forward_table_create()</b> - Sets up an empty forwarding table</li>
+							<li><b>forward_table_forward(...)</b> - Adds a new forwarding rule to the forwarding table</li>
+						</ul>
+
+						<br>
+						Next we tell the <code>queue</code> that it depends on the <code>linked_list</code> and what forwarding table should be used for generation.<br>
+						<ul>
+							<li><b>template_adddep(...)</b> - Adds another template as a dependency using a particular forwarding table</li>
+						</ul>
+
+						<br>
+						Now we're done setting up the templates themselves. They know:
+						<ul>
+							<li>what symbols to expect and what they should be replaced with by default</li>
+							<li>what templates they depend on (if any).</li>
+						</ul>
+
+						<br>
+						We're almost done! And here comes the component that allows for extreme reusability.<br>
+						We need to now setup the specific replacements for the different variants of a template we want.<br>
+						<ul>
+							<li><b>replacement_create()</b> - Sets up an empty replacement set</li>
+							<li><b>replacement_add(...)</b> - Defines what a certain symbol should be replaced with</li>
+						</ul>
+
+						<br>
+						Finally we're at the point where we can run the generator and create our final output files.
+						<ul>
+							<li><b>generator_run(...)</b> - Runs the generator with specified settings, a template, and a replacement
+								<ul>
+									<li><b>settings</b>
+										<ul>
+											<li><b>.search_paths[]</b> - Where should the generator search for the source template files</li>
+											<li><b>.outdir</b> - Where should the generator put the output file</li>
+											<li><b>.verbose</b> - Should the generator produce verbose output</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					`
 				})
 			]
 		}))(), 'blog-container')
+
 		hljs.highlightAll();
 </script>
 
