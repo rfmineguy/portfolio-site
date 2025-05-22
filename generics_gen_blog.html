@@ -55,10 +55,12 @@
 		*/
 		await include_templatelib('templatelib.html', ['blog-header', 'blog-entry', 'blog-p', 'main-heading', 'blog-code']);
 
+		emit((() => template('main-heading', {}))(), 'heading-data-container')
+		
 		emit((() => template('blog-header', {
 			title: "Generics Generator",
 			description: "My journey through the development of this tool",
-		}))(), 'project-container')
+		}))(), 'blog-container')
 
 		emit((() => template('blog-entry', {
 			title: "Why Generics Generator?",
