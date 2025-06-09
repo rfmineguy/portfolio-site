@@ -162,6 +162,33 @@
             ],
         }, flip_card))(), 'project-container');
 
+    /* Tmux Portfolio Website
+    */
+    emit((() => template('card-template', {
+            title: "Tmux Portfolio Website",
+            imgsrc: "assets/images/tmux-port-site.png",
+            back_text: `
+                Generics Generator is a work in progress library that solves the problem of the C programming language not having a built in 
+                generic typing system.<br>
+                <br>
+                When I started programming in C I found the lack of generic data structures frustrating, and began this
+                library to solve that problem.
+            `,
+            description: `
+                A cli program for generating templated C code
+            `,
+            urls: [
+                () => template('url-button-template', {
+                    url: "https://github.com/rfmineguy/generics-generator",
+                    title: "Github",
+                }),
+								() => template('url-button-template', {
+									url: "generics_gen_blog.html",
+									title: "Blog"
+								}),
+            ],
+        }, flip_card))(), 'project-container');
+
     /* Mornamals
     */
     emit((() => template('card-template', {
