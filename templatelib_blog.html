@@ -1,0 +1,61 @@
+<template id="blog-header">
+	<div class="container my-5">
+		<div class="p-5 text-center bg-body-tertiary rounded-3"> 
+			<h1 id="title" class="text-body-emphasis"></h1> 
+			<p id="description" class="lead"></p>
+		</div>
+	</div>
+</template>
+
+<template id="blog-p">
+  <p id="content"></p>
+</template>
+
+<template id="blog-entry">
+	<div class="container my-5">
+		<div class="p-3 bg-body-tertiary rounded-3">
+			<h3 id="title"></h3>
+			<div id="body"></div>
+		</div>
+	</div>
+</template>
+
+<template id="main-heading">
+  <div class="collapse text-bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4>About</h4>
+          <p class="text-body-secondary">
+            This portfolio is intended to demonstrate the projects that I am the most proud of working on.
+          </p>
+          <p class="text-body-secondary">
+            Passionate about programming, I’m a Computer Science student at Cal State East Bay who is driven by continuous learning. I have experience in operating systems, programming languages development, and I excel at Java, C, and C++.
+          </p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/rfmineguy/" class="text-white">Github</a></li>
+            <li><a href="#" class="text-white">rfmineguy@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/riley-fischer-6978391b7/" class="text-white">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="blog-code">
+	<style>
+		.blog-code {
+			border-color: grey;
+			border: 1px grey dashed;
+			border-radius: 3px;
+		}
+	</style>
+	<div class="blog-code terminal">
+		<pre><code id="code" class="language-{{language}}"></code></pre>
+	</div>
+</template>
+
