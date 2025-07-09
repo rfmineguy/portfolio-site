@@ -37,29 +37,215 @@
 </header>
 
 <main>
-
-  <section class="py-1 text-center container">
-    <div class="row py-lg-1">
-      <div class="col-lg-6 col-md-8 mx-auto align-items-strech">
-        <p class="text-body-secondary">
-        </p>
-      </div>
-    </div>
-  </section>
-
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div id="project-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <!-- Filled in dynamically by javascript -->
+        <!--
+          RFOS
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">RFOS</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            RFOS is a project that started in my operating systems class.
+            It is capable of basic file system handling functions.
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            My operating system's college professor created an extra credit assignment at the start of the semester to make an operating system from scratch by the end of the semester.<br>
+            <br>
+            I accepted the challenge and started immediately. This project was the most challenging I've had in school to date.
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/rfos.jpg">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/2024_barebones_os"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--  
+          Spaz
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Spaz</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            Spaz is a stack based programming language inspired by @Tsoding's Porth compiler
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            Spaz was inspired by @Tsoding's Porth, and my college programming languages class.<br>
+            <br>
+            I felt that while I was learning the theory of programming languages it might be fun to implement what I was learning! And it was!
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/spaz_2.svg">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/2024_barebones_os"></tpl-set-attr>
+            </tpl-use>
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Docs</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://rfmineguy.github.io/spaz-docs"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--  
+          Generics Generator
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Generics Generator</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            A cli program for generating templated C code
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            Generics Generator is a work in progress library that solves the problem of the C programming language not having a built in generic typing system.<br>
+            <br>
+            When I started programming in C I found the lack of generic data structures frustrating, and began this library to solve that problem.
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/terminal-svgrepo-com.svg">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github (C)</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/generics-generator-c"></tpl-set-attr>
+            </tpl-use>
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github (Zig)</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/generics-generator"></tpl-set-attr>
+            </tpl-use>
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Blog</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="generics_gen_blog.html"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--
+          Tmux Portfolio Site
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Tmux Portfolio Site</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            A website in the style of tmux.
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            This is a website style I've always wanted to make and never thought I had the skills to make until now.<br>
+            <br>
+            I just decided I was going to make it one day and spent a ton of time learning new css and what it takes to make more complex layouts with html.
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/tmux-port-site.png">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/portfolio-tmux-site"></tpl-set-attr>
+            </tpl-use>
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Site</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://rfmineguy.github.io/portfolio-tmux-site/"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--
+          Mornamals
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Mornamals</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            A game I worked on with a classmate
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            This is a game idea that a classmate had, and wanted to turn into a game. She was skilled in art and I was skilled in programming.<br>
+            <br>
+            I never got the art from her, so this is my programmer art.<br>
+            <br>
+            Unfortunately the game was never fully completed, but it was a good introduction to java programming and game programming.<br>
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/mornamals.png">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/mornamals2"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--
+          Modular Tools
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Modular Tools</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            A minecraft mod that adds special attributes to various tools
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            Modular Tools is a minecraft mod that adds abilities to vanilla tools.<br>
+            <br>
+            The mod allows for the creation of tool modules. Tool modules are then applied to a tool to gain that ability (i.e. mining size, speed, reach, etc.).<br>
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/modular_tools.png">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/mornamals2"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--
+          6502emu
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">6502emu</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            A basic 6502 emulator written in C
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            6502emu is a C library that emulates the 6502 instruction set. It is capable of disassembling, and executing 6502 assembly binaries.<br>
+            <br>
+            My inspiration for it came from a brief interest in NES assembly programming, and being in awe of the relative simplicity of the architecture.<br>
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/6502emu.png">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/mornamals2"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
+
+        <!--
+          MirrorLib
+        -->
+        <tpl-use template="card-template" on-attach="setup_card_template">
+          <tpl-set-value slot-id="#card-title">Mirror Lib</tpl-set-value>
+          <tpl-set-value slot-id="#card-text">
+            MirrorLib is a small library for simulating perfect reflections
+          </tpl-set-value>
+          <tpl-set-value slot-id="#back-text">
+            I was inspirred to make MirrorLib when I watched a <a href="https://www.youtube.com/@TheCodingTrain">Coding Train</a> youtube video about how the game Doom used raycasting for rendering.<br>
+            <br>
+            I was intrigued by the rendering technique and wanted to focus on how to detect collisions with rays.<br>
+            <br>
+            Once I was satisfied with my knowledge on rays, I decided to go further and turn it into a library about mirror reflections.<br>
+          </tpl-set-value>
+          <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/mirror_lib.png">
+          <tpl-set-values slot-id="#urls">
+            <tpl-use template="url-button-template">
+              <tpl-set-value slot-id="#title">Github</tpl-set-value>
+              <tpl-set-attr slot-id="#url" attr="href" val="https://github.com/rfmineguy/mirror-lib"></tpl-set-attr>
+            </tpl-use>
+          </tpl-set-values>
+        </tpl-use>
       </div>
     </div>
   </div>
-
 </main>
 
+<script>
+</script>
+
 <script type="module">
-    const flip_card = (dom_element) => {
-        console.log("init", dom_element);
+    window.setup_card_template = (dom_element) => {
         let dom = dom_element.querySelector('#learn-more');
         let card_heading = dom_element.querySelector('#card');
         dom.onclick = () => {
@@ -79,201 +265,9 @@
         };
     };
 
-		/* Include the template library
-		*/
-		await include_templatelib('templatelib.html', ['card-template', 'url-button-template', 'main-heading']);
-
-
-		emit((() => template('main-heading', {}))(), 'heading-data-container')
-
-
-    /* RFOS
-    */
-    emit((() => template('card-template', {
-            title: "RFOS",
-            imgsrc: "assets/images/rfos.jpg",
-            back_text: `
-                My operating system's college professor created an extra credit assignment at the start of the semester to make an operating system from scratch by the end of the semester. <br>
-                <br>
-                I accepted the challenge and started immediately. This project was the most challenging I've had in school to date.<br>
-            `,
-            description: `
-                RFOS is a project that started in my operating systems class.<br>
-                It is capable of basic file system handling functions.
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/2024_barebones_os",
-                    title: "Github",
-                }),
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Spaz
-    */
-    emit((() => template('card-template', {
-            title: "Spaz",
-            imgsrc: "assets/images/spaz_2.svg",
-            back_text: `
-                Spaz was inspired by @Tsoding's <a href="https://gitlab.com/tsoding/porth">Porth</a>, and my college programming languages class.<br>
-                <br>
-                I felt that while I was learning the theory of programming languages it might be fun to implement what I was learning! And it was!<br>
-                <br>
-            `,
-            description: `
-                Spaz is a stack based programming language inspired by @Tsoding's Porth compiler
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/spaz",
-                    title: "Github",
-                }),
-                () => template('url-button-template', {
-                    url: "https://rfmineguy.github.io/spaz-docs",
-                    title: "Docs Site",
-                }),
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Generics Generator
-    */
-    emit((() => template('card-template', {
-            title: "Generics Generator",
-            imgsrc: "assets/images/terminal-svgrepo-com.svg",
-            back_text: `
-                Generics Generator is a work in progress library that solves the problem of the C programming language not having a built in 
-                generic typing system.<br>
-                <br>
-                When I started programming in C I found the lack of generic data structures frustrating, and began this
-                library to solve that problem.
-            `,
-            description: `
-                A cli program for generating templated C code
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/generics-generator",
-                    title: "Github",
-                }),
-								() => template('url-button-template', {
-									url: "generics_gen_blog.html",
-									title: "Blog"
-								}),
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Tmux Portfolio Website
-    */
-    emit((() => template('card-template', {
-            title: "Tmux Portfolio Website",
-            imgsrc: "assets/images/tmux-port-site.png",
-            back_text: `
-							This is a website style I've always wanted to make and never thought I had the skills to make until now.<br>
-							<br>
-							I just decided I was going to make it one day and spent a ton of time learning new css and what it takes to make more complex layouts with html.
-            `,
-            description: `
-								A website in the style of tmux.
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://rfmineguy.github.io/portfolio-tmux-site/",
-                    title: "Link",
-                }),
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Mornamals
-    */
-    emit((() => template('card-template', {
-            title: "Mornamals",
-            imgsrc: "assets/images/mornamals.png",
-            back_text: `
-                This is a game idea that a classmate had, and wanted to turn into a game. She was skilled in art and I was skilled in programming.<br>
-                <br>
-                I never got the art from her, so this is my programmer art.<br>
-                <br>
-                Unfortunately the game was never fully completed, but it was a good introduction to java programming and game programming.
-            `,
-            description: `
-                A game I worked on with a classmate
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/mornamals2",
-                    title: "Github",
-                })
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Modular Tools
-    */
-    emit((() => template('card-template', {
-            title: "Modular Tools",
-            imgsrc: "assets/images/modular_tools.png",
-            back_text: `
-                Modular Tools is a minecraft mod that adds abilities to vanilla tools.<br>
-                <br>
-                The mod allows for the creation of tool modules. Tool modules are then applied to a tool to gain that ability (i.e. mining size, speed, reach, etc.).
-            `,
-            description: `
-                A minecraft mod that adds special attributes to various tools
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/modular-tools",
-                    title: "Github",
-                })
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* 6502emu
-    */
-    emit((() => template('card-template', {
-            title: "6502emu",
-            imgsrc: "assets/images/6502.png",
-            back_text: `
-                6502emu is a C library that emulates the 6502 instruction set. It is capable of disassembling, and executing 6502 assembly binaries.<br>
-                <br>
-                My inspiration for it came from a brief interest in NES assembly programming, and being in awe of the relative simplicity of the architecture.<br>
-            `,
-            description: `
-                A basic 6502 emulator written in C
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/6502emu",
-                    title: "Github (Lib)",
-                }),
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/6502emu-gui",
-                    title: "Github (GUI)",
-                })
-            ],
-        }, flip_card))(), 'project-container');
-
-    /* Mirror Lib
-    */
-    emit((() => template('card-template', {
-            title: "MirrorLib",
-            imgsrc: "assets/images/mirror_lib.png",
-            back_text: `
-                I was inspirred to make MirrorLib when I watched a <a href="https://www.youtube.com/@TheCodingTrain">Coding Train</a> youtube video about how the game Doom used raycasting for rendering.<br>
-                <br>
-                I was intrigued by the rendering technique and wanted to focus on how to detect collisions with rays.<br>
-                <br>
-                Once I was satisfied with my knowledge on rays, I decided to go further and turn it into a library about mirror reflections.<br>
-            `,
-            description: `
-                MirrorLib is a small library for simulating perfect reflections
-            `,
-            urls: [
-                () => template('url-button-template', {
-                    url: "https://github.com/rfmineguy/mirror-lib",
-                    title: "Github",
-                })
-            ],
-        }, flip_card))(), 'project-container');
+    var template_engine = new TemplateEngine();
+    await template_engine.load('templatelib2.html', '*');
+    template_engine.populatePage();
 </script>
 
 <footer class="text-body-secondary py-5">

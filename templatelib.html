@@ -8,100 +8,31 @@
 		urls 				: A array of 'url-button-template's
 -->
 <template id="card-template">
-  <div id="card" class="card shadow-sm h-100">
+  <div id="card" class="card shadow-sm h-100 flex-fill d-flex flex-colummn">
     <div class="card-heading">
-        <img class="front" src={{imgsrc}} alt="" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: scale-down">
+        <img id="img" class="front" height="300px" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" style="padding:1rem; object-fit: scale-down">
         <div class="back">
-            <p>{{back_text}}</p>
+          <p id="back-text"></p>
         </div>
     </div>
     <hr>
     <div class="card-body">
       <div class="card-title row">
-          <h5>{{title}}</h5>
+          <h5 id="card-title"></h5>
       </div>
-      <p class="card-text">{{description}}</p>
+      <p id="card-text" class="card-text"></p>
     </div>
     <div class="card-footer">
       <div class="d-flex justify-content-between align-items-center">
         <div id="urls" class="btn-group">
-        </div>
-        <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
-    </div>
-  </div>
-</template>
-
-<!--
-	url-button-template : Defines what a project's url buttons should look like
-	args:
-		url 		: Url for where to navigate to when this button is pressed
-		title   : Title of the button
--->
-<template id="url-button-template">
-  <a href={{url}}>
-    <button type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem">{{title}}</button>
-  </a>
-</template>
-
-<template id="blog-header">
-	<div class="container my-5">
-		<div class="p-5 text-center bg-body-tertiary rounded-3"> 
-			<h1 class="text-body-emphasis">{{title}}</h1> 
-			<p class="lead">
-				{{description}}
-			</p>
-		</div>
-	</div>
-</template>
-
-<template id="blog-p">
-	<p>{{content}}</p>
-</template>
-
-<template id="blog-entry">
-	<div class="container my-5">
-		<div class="p-3 bg-body-tertiary rounded-3">
-			<h3>{{title}}</h3>
-			<div id="body"></div>
-		</div>
-	</div>
-</template>
-
-<template id="main-heading">
-  <div class="collapse text-bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4>About</h4>
-          <p class="text-body-secondary">
-            This portfolio is intended to demonstrate the projects that I am the most proud of working on.
-          </p>
-          <p class="text-body-secondary">
-            Passionate about programming, I’m a Computer Science student at Cal State East Bay who is driven by continuous learning. I have experience in operating systems, programming languages development, and I excel at Java, C, and C++.
-          </p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4>Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="https://github.com/rfmineguy/" class="text-white">Github</a></li>
-            <li><a href="#" class="text-white">rfmineguy@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/riley-fischer-6978391b7/" class="text-white">LinkedIn</a></li>
-          </ul>
-        </div>
       </div>
+      <button id="learn-more" type="button" class="btn btn-sm btn-outline-secondary">Learn More</button>
     </div>
   </div>
 </template>
 
-<template id="blog-code">
-	<style>
-		.blog-code {
-			border-color: grey;
-			border: 1px grey dashed;
-			border-radius: 3px;
-		}
-	</style>
-	<div class="blog-code terminal">
-		<pre><code class="language-{{language}}">{{code}}</code></pre>
-	</div>
+<template id="url-button-template">
+  <a id="url">
+    <button id="title" type="button" class="btn btn-sm btn-outline-secondary" style="margin-right: 1rem"></button>
+  </a>
 </template>
