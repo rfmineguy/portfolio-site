@@ -1,3 +1,7 @@
+body {
+  display: none;
+}
+
 .card-heading {
     position: relative;
     width: 100%;
