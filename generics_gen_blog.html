@@ -535,6 +535,9 @@
 <script type="module">
 		/* Include the template library
 		*/
+    setTimeout(() => {
+      document.body.style.display = 'block'
+    }, 5)
     var template_engine = new TemplateEngine();
     await template_engine.load('templatelib_blog.html', '*');
     template_engine.populatePage();
